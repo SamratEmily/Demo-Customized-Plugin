@@ -11,7 +11,7 @@ class CustomField {
         add_action( 'woocommerce_process_product_meta', [ $this, 'save_new_custom_product_data' ], 10 );
 
         // Add a shortcode
-        add_shortcode( 'custom_fields_form', [ $this, 'display_custom_fields_form' ] );
+        // add_shortcode( 'custom_fields_form', [ $this, 'display_custom_fields_form' ] );
     }
 
     /**
