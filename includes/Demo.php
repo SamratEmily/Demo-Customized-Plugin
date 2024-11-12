@@ -216,6 +216,7 @@ final class Demo {
         $this->container['task'] = new Task();
         $this->container['company_name'] = new SingleProductPage();
         $this->container['vendor_setting_new_data'] = new VendorSetting();
+        $this->container['action_hook'] = new ActionHook();
     }
 
     /**
