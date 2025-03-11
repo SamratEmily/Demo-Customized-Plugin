@@ -7,9 +7,9 @@ class CustomField {
 	 * The constructor.
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'print_roles' ) );
-		// add_action( 'woocommerce_product_options_general_product_data', array( $this, 'add_new_custom_product_data' ), 10 );
-		// add_action( 'woocommerce_process_product_meta', array( $this, 'save_new_custom_product_data' ), 10 );
+		// add_action( 'init', array( $this, 'print_roles' ) );
+		add_action( 'woocommerce_product_options_general_product_data', array( $this, 'add_new_custom_product_data' ), 10 );
+		add_action( 'woocommerce_process_product_meta', array( $this, 'save_new_custom_product_data' ), 10 );
 
 		// Add a shortcode
 		// add_shortcode( 'custom_fields_form', [ $this, 'display_custom_fields_form' ] );
