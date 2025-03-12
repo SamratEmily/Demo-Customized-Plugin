@@ -17,9 +17,9 @@ class Corn {
 	 * Add a new cron interval (every 5 minutes).
 	 */
 	public function add_cron_interval( $schedules ) {
-		$schedules['twenty_second'] = array(
-			'interval' => 20,
-			'display'  => esc_html__( 'Every Five Minutes', 'demo' ),
+		$schedules['two_second'] = array(
+			'interval' => 2,
+			'display'  => esc_html__( 'Every two seconds', 'demo' ),
 		);
 		return $schedules;
 	}
@@ -29,7 +29,7 @@ class Corn {
 	 */
 	public function schedule_cron_event() {
 		if ( ! wp_next_scheduled( 'welabs_demo_cron_task' ) ) {
-			wp_schedule_event( time(), 'twenty_second', 'welabs_demo_cron_task' );
+			wp_schedule_event( time(), 'two_second', 'welabs_demo_cron_task' );
 		}
 	}
 
@@ -40,35 +40,54 @@ class Corn {
 		if ( wp_is_post_autosave( $post_ID ) || wp_is_post_revision( $post_ID ) ) {
 			return;
 		}
-
+	
 		update_post_meta( $post_ID, '_last_updated_time', current_time( 'mysql' ) );
-
+	
 		$updated_products = get_transient( 'welabs_updated_products' ) ?: [];
 		$updated_products[$post_ID] = [
 			'title' => get_the_title( $post_ID ),
 			'url'   => get_permalink( $post_ID ),
 			'time'  => current_time( 'mysql' ),
 		];
-		set_transient( 'welabs_updated_products', $updated_products, 3600 );
+	
+		set_transient( 'welabs_updated_products', $updated_products, 5 * MINUTE_IN_SECONDS ); // Save the transient
 	}
+	
 
 	/**
 	 * Send scheduled email to the admin with updated products.
 	 */
+	// public function send_scheduled_email() {
+	// 	// $admin_email = get_option( 'admin_email' );
+	// 	// $updated_products = get_transient( 'welabs_updated_products' );
+		
+	// 	if ( ! empty( $updated_products ) ) {
+			
+	// 		do_action( 'welabs_demo_send_email', $updated_products );
+
+	// 		// $subject = 'Recently Updated Products';
+	// 		// $message = "The following products were updated:\n\n";
+
+	// 		// foreach ( $updated_products as $product ) {
+	// 		// 	$message .= "- {$product['title']} (Updated at: {$product['time']})\n";
+	// 		// 	$message .= "  View: {$product['url']}\n\n";
+	// 		// }
+
+	// 		// wp_mail( $admin_email, $subject, $message );
+
+	// 	}
+	// }
+
 	public function send_scheduled_email() {
-		$admin_email = get_option( 'admin_email' );
 		$updated_products = get_transient( 'welabs_updated_products' );
 
-		if ( ! empty( $updated_products ) ) {
-			$subject = 'Recently Updated Products';
-			$message = "The following products were updated:\n\n";
+		$product = reset( $updated_products );
 
-			foreach ( $updated_products as $product ) {
-				$message .= "- {$product['title']} (Updated at: {$product['time']})\n";
-				$message .= "  View: {$product['url']}\n\n";
+		if ( ! empty( $product ) ) {
+			$emails = wc()->mailer()->emails;
+			if ( ! empty( $emails['WeLabs_Demo_CornEmail'] ) ) {
+				$emails['WeLabs_Demo_CornEmail']->trigger( $product );
 			}
-
-			wp_mail( $admin_email, $subject, $message );
 
 			delete_transient( 'welabs_updated_products' );
 		}

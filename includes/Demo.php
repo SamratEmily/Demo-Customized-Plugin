@@ -220,6 +220,7 @@ final class Demo {
 		$this->container['vendor_setting_new_data'] = new VendorSetting();
 		$this->container['action_hook']             = new ActionHook();
 		$this->container['corn']                    = new Corn();
+		$this->container['email_manager']           = new EmailManager();;
 	}
 
 	/**
