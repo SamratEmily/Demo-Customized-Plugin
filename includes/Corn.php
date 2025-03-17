@@ -7,10 +7,10 @@ class Corn {
 	 * The constructor.
 	 */
 	public function __construct() {
-		add_filter( 'cron_schedules', [ $this, 'add_cron_interval' ] );
-		add_action( 'wp', [ $this, 'schedule_cron_event' ] );
-		add_action( 'welabs_demo_cron_task', [ $this, 'send_scheduled_email' ] );
-		add_action( 'save_post_product', [ $this, 'store_updated_product' ], 10, 2 );
+		// add_filter( 'cron_schedules', [ $this, 'add_cron_interval' ] );
+		// add_action( 'wp', [ $this, 'schedule_cron_event' ] );
+		// add_action( 'welabs_demo_cron_task', [ $this, 'send_scheduled_email' ] );
+		// add_action( 'save_post_product', [ $this, 'store_updated_product' ], 10, 2 );
 	}
 
 	/**

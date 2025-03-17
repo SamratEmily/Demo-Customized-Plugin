@@ -6,9 +6,9 @@ class Task {
 	 * The constructor.
 	 */
 	public function __construct() {
-		add_action( 'dokan_order_detail_after_order_general_details', array( $this, 'add_new_task' ), 10, 2 );
-		add_action( 'admin_post_save_custom_task', array( $this, 'handle_form_submission' ) ); // Form submission for logged-in users (admin)
-		add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_order_data_in_admin' ) );
+		// add_action( 'dokan_order_detail_after_order_general_details', array( $this, 'add_new_task' ), 10, 2 );
+		// add_action( 'admin_post_save_custom_task', array( $this, 'handle_form_submission' ) ); // Form submission for logged-in users (admin)
+		// add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_order_data_in_admin' ) );
 	}
 
 	/**

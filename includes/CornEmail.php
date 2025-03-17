@@ -173,7 +173,6 @@ class CornEmail extends WC_Email {
 			return;
 		}
 		$this->product = $product;
-		error_log("heee--> " . json_encode($this->product));
 		if ( $this->is_enabled() ) {
 			$this->setup_locale();
 			$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), array(), '' );

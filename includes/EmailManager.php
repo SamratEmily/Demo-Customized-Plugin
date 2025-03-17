@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class EmailManager {
     public function __construct() {
-        add_filter( 'woocommerce_email_classes', [ $this, 'register_custom_email' ] );
+        // add_filter( 'woocommerce_email_classes', [ $this, 'register_custom_email' ] );
     }
 
     /**

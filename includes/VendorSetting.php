@@ -7,10 +7,7 @@ class VendorSetting {
      * The constructor.
      */
     public function __construct() {
-        // Hook to display the company name field in the vendor store settings
         add_action( 'dokan_settings_after_store_name', [ $this, 'add_company_name' ], 12, 2 );
-
-        // Hook to save the company name when vendor settings are saved
         add_action( 'dokan_store_profile_saved', [ $this, 'save_company_name' ], 10, 2 );
     }
 

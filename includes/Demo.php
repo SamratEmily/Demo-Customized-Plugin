@@ -3,6 +3,8 @@
 namespace WeLabs\Demo;
 
 use WeLabs\Demo\Corn;
+use WeLabs\Demo\Taxonomy;
+use WeLabs\Demo\SearchEnhancement;
 
 /**
  * Demo class
@@ -214,13 +216,16 @@ final class Demo {
 	 */
 	public function init_classes() {
 		$this->container['scripts']                 = new Assets();
-		$this->container['custom_field']            = new CustomField();
-		$this->container['task']                    = new Task();
-		$this->container['company_name']            = new SingleProductPage();
-		$this->container['vendor_setting_new_data'] = new VendorSetting();
-		$this->container['action_hook']             = new ActionHook();
-		$this->container['corn']                    = new Corn();
-		$this->container['email_manager']           = new EmailManager();;
+		// $this->container['custom_field']            = new CustomField();
+		// $this->container['task']                    = new Task();
+		// $this->container['company_name']            = new SingleProductPage();
+		// $this->container['vendor_setting_new_data'] = new VendorSetting();
+		// $this->container['action_hook']             = new ActionHook();
+		// $this->container['corn']                    = new Corn();
+		// $this->container['email_manager']           = new EmailManager();
+		$this->container['taxonomy']           = new Taxonomy();
+		$this->container['search_enhancement']           = new SearchEnhancement();
+		// $this->container['books']           = new Book();
 	}
 
 	/**
