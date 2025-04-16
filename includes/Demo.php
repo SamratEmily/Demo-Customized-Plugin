@@ -5,6 +5,7 @@ namespace WeLabs\Demo;
 use WeLabs\Demo\Corn;
 use WeLabs\Demo\Taxonomy;
 use WeLabs\Demo\SearchEnhancement;
+use WeLabs\Demo\AdminForm;
 
 /**
  * Demo class
@@ -225,7 +226,8 @@ final class Demo {
 		// $this->container['email_manager']           = new EmailManager();
 		$this->container['taxonomy']           = new Taxonomy();
 		$this->container['search_enhancement']           = new SearchEnhancement();
-		// $this->container['books']           = new Book();
+		$this->container['books']           = new Book();
+		$this->container['admin_form'] = new AdminForm();
 	}
 
 	/**
