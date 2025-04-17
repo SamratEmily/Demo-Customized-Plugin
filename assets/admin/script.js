@@ -1,9 +1,8 @@
 jQuery(document).ready(function ($) {
   $("#add-order-note").on("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
 
-    var formData = $(this).serialize(); // Serialize form data
-
+    var formData = $(this).serialize();
     $.ajax({
       url: task_ajax_object.ajax_url,
       type: "POST",
@@ -11,12 +10,9 @@ jQuery(document).ready(function ($) {
         formData + "&nonce=" + task_ajax_object.nonce + "&action=save_new_task",
       success: function (response) {
         if (response.success) {
-          // Display success message
           alert(response.data.message);
-          // Optionally refresh part of the page or update content
-          location.reload(); // Reload the page to see the changes
+          location.reload();
         } else {
-          // Display error message
           alert(response.data.message);
         }
       },
@@ -24,5 +20,13 @@ jQuery(document).ready(function ($) {
         alert("An error occurred while saving data.");
       },
     });
+  });
+
+  $("select[data-custom='custom']").on("change", function () {
+    var value = $(this).val();
+    var container = $(this).closest(".wporg_row");
+
+    container.find(".pill-desc").hide();
+    container.find(".pill-" + value).show();
   });
 });
