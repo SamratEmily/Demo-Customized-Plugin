@@ -29,4 +29,21 @@ jQuery(document).ready(function ($) {
     container.find(".pill-desc").hide();
     container.find(".pill-" + value).show();
   });
+
+
+  function togglePillDescriptions($select) {
+    var selected = $select.val();
+    var $parent = $select.closest('td, .form-field');
+
+    $parent.find('.pill-desc').hide();
+    $parent.find('.pill-' + selected).show();
+  }
+
+  $('select[name*="pill"]').each(function () {
+    togglePillDescriptions($(this));
+  });
+
+  $(document).on('change', 'select[name*="pill"]', function () {
+    togglePillDescriptions($(this));
+  });
 });
