@@ -2,10 +2,13 @@
 
 namespace WeLabs\Demo;
 
+/**
+ * Admin  side Form
+ */
 class AdminForm {
-    /**
-     * Constructor
-     */
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_admin_form' ) );
 		add_action( 'admin_menu', array( $this, 'register_submenu_page' ) );
@@ -13,32 +16,32 @@ class AdminForm {
 		add_action( 'admin_init', array( $this, 'wporg_settings_init_under_general' ) );
 	}
 
-    /**
-     * Pill settings under general
-     *
-     * @return void
-     */
-    public function wporg_settings_init_under_general() {
-        register_setting( 'general', 'wporg_options_pill' );
-    
-        add_settings_field(
-            'wporg_options_pill',
-            __( 'Choose a Pill', 'wporg' ),
-            array( $this, 'wporg_field_pill_cb_general' ),
-            'general' // ← attach to "Settings > General"
-        );
-    }
+	/**
+	 * Pill settings under general
+	 *
+	 * @return void
+	 */
+	public function wporg_settings_init_under_general() {
+		register_setting( 'general', 'wporg_options_pill' );
 
-    /**
-     * Template for pill settings under general
-     *
-     * @return void
-     */
-    public function wporg_field_pill_cb_general() {
-        $options = get_option( 'wporg_options' );
+		add_settings_field(
+			'wporg_options_pill',
+			__( 'Choose a Pill', 'wporg' ),
+			array( $this, 'wporg_field_pill_cb_general' ),
+			'general'
+		);
+	}
+
+	/**
+	 * Template for pill settings under general
+	 *
+	 * @return void
+	 */
+	public function wporg_field_pill_cb_general() {
+		$options = get_option( 'wporg_options' );
 		require_once DEMO_TEMPLATE_DIR . '/custom-settings-general.php';
-    }
-    
+	}
+
 
 	/**
 	 * Add the top level menu page.

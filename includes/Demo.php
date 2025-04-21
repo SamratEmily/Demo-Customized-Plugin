@@ -6,6 +6,7 @@ use WeLabs\Demo\Corn;
 use WeLabs\Demo\Taxonomy;
 use WeLabs\Demo\SearchEnhancement;
 use WeLabs\Demo\AdminForm;
+use WeLabs\Demo\CustomTable;
 
 /**
  * Demo class
@@ -71,6 +72,7 @@ final class Demo {
 
 		register_activation_hook( DEMO_FILE, array( $this, 'activate' ) );
 		register_deactivation_hook( DEMO_FILE, array( $this, 'deactivate' ) );
+		register_activation_hook( DEMO_FILE, [ 'WeLabs\Demo\CustomTable', 'activate' ] );
 
 		add_action( 'plugins_loaded', array( $this, 'init_plugin' ) );
 		add_action( 'woocommerce_flush_rewrite_rules', array( $this, 'flush_rewrite_rules' ) );
@@ -122,6 +124,7 @@ final class Demo {
 		if ( $this->has_woocommerce() ) {
 			$this->flush_rewrite_rules();
 		}
+
 	}
 
 	/**
@@ -228,6 +231,7 @@ final class Demo {
 		$this->container['search_enhancement']           = new SearchEnhancement();
 		$this->container['books']           = new Book();
 		$this->container['admin_form'] = new AdminForm();
+		$this->container['custom_table'] = new CustomTable();
 	}
 
 	/**
