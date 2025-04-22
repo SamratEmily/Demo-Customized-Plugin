@@ -7,6 +7,7 @@ use WeLabs\Demo\Taxonomy;
 use WeLabs\Demo\SearchEnhancement;
 use WeLabs\Demo\AdminForm;
 use WeLabs\Demo\CustomTable;
+use WeLabs\Demo\MyCustomListTable;
 
 /**
  * Demo class
@@ -229,9 +230,10 @@ final class Demo {
 		// $this->container['email_manager']           = new EmailManager();
 		$this->container['taxonomy']           = new Taxonomy();
 		$this->container['search_enhancement']           = new SearchEnhancement();
-		$this->container['books']           = new Book();
+		// $this->container['books']           = new Book();
 		$this->container['admin_form'] = new AdminForm();
 		$this->container['custom_table'] = new CustomTable();
+		// $this->container['my_custom_list_table'] = new MyCustomListTable();
 	}
 
 	/**

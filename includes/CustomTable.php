@@ -2,11 +2,57 @@
 
 namespace WeLabs\Demo;
 
+use WeLabs\Demo\MyCustomListTable;
+
+/**
+ * CustomTable Class
+ */
 class CustomTable {
+
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
+		add_action( 'admin_menu', array( $this, 'add_a_menu_for_wp_list' ) );
 	}
 
+	/**
+	 * Add a menu
+	 *
+	 * @return void
+	 */
+	public function add_a_menu_for_wp_list() {
+        add_menu_page(
+            'Custom Table',
+            'Custom Table',
+            'manage_options',
+            'my-custom-table',
+            [ $this, 'render_my_custom_admin_table']
+        );
+    }
+
+	/**
+	 * Render admin table
+	 *
+	 * @return void
+	 */
+    public function render_my_custom_admin_table() {
+        $table = new MyCustomListTable();
+        $table->prepare_items();
+        echo '<div class="wrap">';
+        echo '<h1 class="wp-heading-inline"> WP List</h1>';
+        echo '<form method="post">';
+        $table->display();
+        echo '</form>';
+        echo '</div>';
+    }
+    
+	/**
+	 * Register the table when plugin activate
+	 *
+	 * @return void
+	 */
 	public static function activate() {
 		global $wpdb;
 		$table_name      = $wpdb->prefix . 'custom_form';
@@ -24,6 +70,11 @@ class CustomTable {
 		dbDelta( $sql );
 	}
 
+	/**
+	 * Add a menu at the admin side
+	 *
+	 * @return void
+	 */
 	public function add_admin_menu() {
 		add_menu_page(
 			'Custom Form',
@@ -34,11 +85,15 @@ class CustomTable {
 		);
 	}
 
+	/**
+	 * Rendering admin page
+	 *
+	 * @return void
+	 */
 	public function render_form_page() {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'custom_form';
 
-		// Handle form submission
 		if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['cfp_submit'] ) ) {
 			$name  = sanitize_text_field( $_POST['cfp_name'] );
 			$email = sanitize_email( $_POST['cfp_email'] );
