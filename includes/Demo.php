@@ -233,6 +233,7 @@ final class Demo {
 		// $this->container['books']           = new Book();
 		$this->container['admin_form'] = new AdminForm();
 		$this->container['custom_table'] = new CustomTable();
+		$this->container['another_menu'] = new AnotherMenu();
 		// $this->container['my_custom_list_table'] = new MyCustomListTable();
 	}
 
