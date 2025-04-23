@@ -24,11 +24,13 @@ class CustomTable {
 	 */
 	public function add_a_menu_for_wp_list() {
         add_menu_page(
-            'Custom Table',
-            'Custom Table',
+            'WP List Table',
+            'WP List Table',
             'manage_options',
             'my-custom-table',
-            [ $this, 'render_my_custom_admin_table']
+            [ $this, 'render_my_custom_admin_table'],
+            'dashicons-editor-table',
+            30
         );
     }
 
@@ -41,7 +43,7 @@ class CustomTable {
         $table = new MyCustomListTable();
         $table->prepare_items();
         echo '<div class="wrap">';
-        echo '<h1 class="wp-heading-inline"> WP List</h1>';
+        echo '<h1 class="wp-heading-inline">WP List Table</h1>';
         echo '<form method="post">';
         $table->display();
         echo '</form>';
@@ -82,6 +84,7 @@ class CustomTable {
 			'manage_options',
 			'custom-form',
 			array( $this, 'render_form_page' )
+			
 		);
 	}
 
