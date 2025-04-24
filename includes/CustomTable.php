@@ -95,7 +95,9 @@ class CustomTable {
 			'Custom Form',
 			'manage_options',
 			'custom-form',
-			array( $this, 'render_form_page' )
+			array( $this, 'render_form_page' ),
+			'dashicons-editor-table',
+			40
 		);
 	}
 
