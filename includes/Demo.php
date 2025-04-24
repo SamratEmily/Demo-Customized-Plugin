@@ -8,6 +8,7 @@ use WeLabs\Demo\SearchEnhancement;
 use WeLabs\Demo\AdminForm;
 use WeLabs\Demo\CustomTable;
 use WeLabs\Demo\MyCustomListTable;
+use WeLabs\Demo\NewMenu;
 
 /**
  * Demo class
@@ -234,6 +235,7 @@ final class Demo {
 		$this->container['admin_form'] = new AdminForm();
 		$this->container['custom_table'] = new CustomTable();
 		$this->container['another_menu'] = new AnotherMenu();
+		$this->container['new_menu'] = new NewMenu();
 		// $this->container['my_custom_list_table'] = new MyCustomListTable();
 	}
 
