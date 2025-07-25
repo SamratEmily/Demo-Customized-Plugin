@@ -9,6 +9,7 @@ use WeLabs\Demo\AdminForm;
 use WeLabs\Demo\CustomTable;
 use WeLabs\Demo\MyCustomListTable;
 use WeLabs\Demo\NewMenu;
+use WeLabs\Demo\VendorDashboardCustomizer;
 
 /**
  * Demo class
@@ -229,14 +230,15 @@ final class Demo {
 		// $this->container['action_hook']             = new ActionHook();
 		// $this->container['corn']                    = new Corn();
 		// $this->container['email_manager']           = new EmailManager();
-		$this->container['taxonomy']           = new Taxonomy();
-		$this->container['search_enhancement']           = new SearchEnhancement();
+		// $this->container['taxonomy']           = new Taxonomy();
+		// $this->container['search_enhancement']           = new SearchEnhancement();
 		// $this->container['books']           = new Book();
-		$this->container['admin_form'] = new AdminForm();
-		$this->container['custom_table'] = new CustomTable();
-		$this->container['another_menu'] = new AnotherMenu();
-		$this->container['new_menu'] = new NewMenu();
+		// $this->container['admin_form'] = new AdminForm();
+		// $this->container['custom_table'] = new CustomTable();
+		// $this->container['another_menu'] = new AnotherMenu();
+		// $this->container['new_menu'] = new NewMenu();
 		// $this->container['my_custom_list_table'] = new MyCustomListTable();
+		$this->container['vendor_dashboard_customizer'] = new VendorDashboardCustomizer();
 	}
 
 	/**

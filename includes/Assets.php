@@ -49,9 +49,11 @@ class Assets {
     public function register_styles() {
         $admin_style       = DEMO_PLUGIN_ASSET . '/admin/style.css';
         $frontend_style    = DEMO_PLUGIN_ASSET . '/frontend/style.css';
+        $frontend_style_custome    = DEMO_PLUGIN_ASSET . '/frontend/custom-dokan-dashboard.css';
 
         wp_register_style( 'demo_admin_style', $admin_style, [], filemtime( DEMO_DIR . '/assets/admin/style.css' ) );
         wp_register_style( 'demo_style', $frontend_style, [], filemtime( DEMO_DIR . '/assets/frontend/style.css' ) );
+        wp_register_style( 'custom_dokan_dashboard', $frontend_style_custome, [], filemtime( DEMO_DIR . '/assets/frontend/custom-dokan-dashboard.css' ) );
     }
 
     /**
@@ -73,6 +75,8 @@ class Assets {
      */
     public function enqueue_front_scripts() {
         wp_enqueue_script( 'demo_script' );
+        wp_enqueue_style( 'demo_style' );
+        wp_enqueue_style( 'custom_dokan_dashboard' );
         wp_localize_script(
             'demo_script', 'Demo', []
         );
